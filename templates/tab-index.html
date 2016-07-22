@@ -1,0 +1,36 @@
+
+<ion-view view-title="Home" >
+  <ion-content>
+   
+
+    <div class="card audio">
+      <audio id="audio" ng-hide="true" controls>
+        <source ng-src="{{audio.url}}" type="audio/mpeg">
+      </audio>
+      <div class="item audio-title item-divider">
+        <h2>{{audio.title}}</h2>
+      </div>
+      <div class="item audio-content range item-text-wrap">
+        <input class="audio-progress" ng-change="progress_change()" ng-model="audio.value" type="range" name="volume" min="0" max="10000" value="0">
+      </div>
+      <div class="item audio-btns row item-divider">
+        <div class="col" ng-switch on="audio.status">
+          <i class="ion-skip-backward"></i>
+          <i ng-switch-default class="ion-refresh" ></i>
+          <i ng-switch-when="2" class="ion-play" ng-click="play()"></i>
+          <i ng-switch-when="3" class="ion-pause" ng-click="pause()"></i>
+          <i class="ion-skip-forward"></i>
+        </div>
+        <div class="col" style="text-align:right;">
+          <span class="audio-currentTime">{{get_time(audio.currentTime)}}</span>
+          <span>/</span>
+          <span class="audio-duration">{{get_time(audio.duration)}}</span>
+          
+        </div>
+      </div>
+    </div>
+
+
+    
+  </ion-content>
+</ion-view>
